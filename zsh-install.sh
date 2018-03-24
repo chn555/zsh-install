@@ -6,15 +6,15 @@
 
 
 installing_zsh (){
- command -v zsh  &> /dev/null || sudo apt install zsh 2> /dev/null || sudo yum install zsh 2> /dev/null || sudo pacman -S zsh --noconfirm 2> /dev/null
+ command -v zsh  &> /dev/null || sudo apt install -y zsh 2> /dev/null || sudo yum install -y zsh 2> /dev/null || sudo pacman -S zsh --noconfirm 2> /dev/null
 }
 
 installing_curl (){
- command -v curl &> /dev/null || sudo apt install curl  2> /dev/null || sudo yum install curl 2> /dev/null  || sudo pacman -S curl --noconfirm 2> /dev/null
+ command -v curl &> /dev/null || sudo apt install curl  -y 2> /dev/null || sudo yum install curl -y 2> /dev/null  || sudo pacman -S curl --noconfirm 2> /dev/null
 }
 
 installing_git (){
- command -v git &> /dev/null || sudo apt install git 2> /dev/null  || sudo yum install git  2> /dev/null || sudo pacman -S git --noconfirm 2> /dev/null
+ command -v git &> /dev/null || sudo apt install git -y 2> /dev/null  || sudo yum install git -y 2> /dev/null || sudo pacman -S git --noconfirm 2> /dev/null
 }
 
 installing_omz (){
