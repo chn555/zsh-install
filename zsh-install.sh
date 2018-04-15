@@ -3,6 +3,7 @@
 # used to install and configure zsh
 # written by chn555
 # 24/3/18
+# updated on 15/4/18
 
 
 installing_zsh (){
@@ -17,8 +18,10 @@ installing_git (){
  command -v git &> /dev/null || sudo apt install git -y 2> /dev/null  || sudo yum install git -y 2> /dev/null || sudo pacman -S git --noconfirm 2> /dev/null
 }
 
+omz-cleanup=$(rm -rf  $HOME/.oh-my-zsh ; exit 1)
+
 installing_omz (){
- sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+ curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash && [ $? != 0 ] && omz-cleanup || exit 0
 }
 
 plugin () {
@@ -32,7 +35,7 @@ echo "# If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/chn555/.oh-my-zsh
+  export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -96,7 +99,7 @@ plugins=(
   zsh-autosuggestions
 )
 
-source /home/chn555/.oh-my-zsh/oh-my-zsh.sh
+source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 # User configuration
 
@@ -126,7 +129,7 @@ source /home/chn555/.oh-my-zsh/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
- "> $HOME/.zshrc
+ "> $HOME/.zshrc && [ $? != 0 ] && omz-cleanup || exit 0
 }
 
 installing_powerfonts () {
