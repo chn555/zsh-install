@@ -21,7 +21,7 @@ installing_git (){
 omz-cleanup=$(rm -rf  $HOME/.oh-my-zsh ; exit 1)
 
 installing_omz (){
- curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash && [ $? != 0 ] && omz-cleanup || exit 0
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 }
 
 plugin () {
